@@ -7,8 +7,8 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import by.agd.rsandroidtask4.R
-import by.agd.rsandroidtask4.adapter.DropDownImageListAdapter
 import by.agd.rsandroidtask4.adapter.DropDownListAdapter
+import by.agd.rsandroidtask4.databinding.ListItemBinding
 import coil.api.load
 import com.google.android.material.textfield.TextInputLayout
 import java.text.DecimalFormat
@@ -20,11 +20,13 @@ fun setItemList(view: AutoCompleteTextView, items: Array<String>, images: TypedA
     val resources = context.resources
     val textInputLayout = view.parent.parent as TextInputLayout
 
-    val items  = items.toList()
-
     val adapter =
-        if (images == null) DropDownListAdapter(context, R.layout.list_item, items)
-        else DropDownImageListAdapter(context, R.layout.image_list_item, items, images)
+        DropDownListAdapter<String, ListItemBinding>(context, R.layout.list_item, items.toList())
+            .onViewBinned { binding, item, _ -> binding.itemName.text = item }
+            .setFilter { item, constraint -> item.startsWith(constraint) }
+
+//    val adapter = if (images == null) DropDownListAdapter<String,ListItemBinding>(context, R.layout.list_item, items.toList())
+//        else DropDownImageListAdapter(context, R.layout.image_list_item, items, items.toList())
 
     view.apply {
         setAdapter(adapter)
