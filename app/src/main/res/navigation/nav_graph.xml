@@ -9,5 +9,30 @@
         android:id="@+id/carListFragment"
         android:name="by.agd.rsandroidtask4.view.carlist.CarListFragment"
         android:label="fragment_car_list"
-        tools:layout="@layout/fragment_car_list" />
+        tools:layout="@layout/fragment_car_list">
+        <action
+            android:id="@+id/action_carListFragment_to_addCarFragment"
+            app:destination="@id/addCarFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/carListFragment" />
+        <action
+            android:id="@+id/action_carListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCarFragment"
+        android:name="by.agd.rsandroidtask4.view.addcar.AddCarFragment"
+        android:label="AddCarFragment"
+        tools:layout="@layout/fragment_add_car" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="by.agd.rsandroidtask4.view.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

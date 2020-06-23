@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <import type="by.agd.rsandroidtask4.binding.Converter" />
+
+        <variable
+            name="car"
+            type="by.agd.rsandroidtask4.model.Car" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppTheme.App.CardView.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:src="@{@typedArray/car_makers_logo.getDrawable(car.carMaker)}"
+                app:layout_constraintBottom_toBottomOf="@id/price"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/model" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:fontFamily="@font/roboto"
+                android:text="@{@string/car_name(@stringArray/car_makers_name[car.carMaker], car.model)}"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Model" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:fontFamily="@font/asap"
+                android:text='@{@string/car_price(Converter.decimalFormat(car.price, "#,###,###.00"))}'
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/logo"
+                app:layout_constraintTop_toBottomOf="@+id/model"
+                tools:text="@string/car_price" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingTop="@dimen/padding_medium"
+                android:paddingBottom="@dimen/padding_medium"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="w,9:16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price"
+                app:srcCompat="@drawable/mercedes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/body"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_body(@stringArray/car_body_types[car.body]))}"
+                app:layout_constraintEnd_toStartOf="@+id/color"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                tools:text="Body:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/color"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_color(@stringArray/car_colors[car.color]))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/body"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                tools:text="Color:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/year"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_year(car.year))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/mileage"
+                app:layout_constraintTop_toBottomOf="@id/body"
+                tools:text="Year:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mileage"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_mileage(car.mileage))}"
+                app:layout_constraintEnd_toStartOf="@+id/year"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/body"
+                tools:text="Mileage:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/transmission"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_transmission(@stringArray/car_transmission_types[car.transmission]))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/drivetrain"
+                app:layout_constraintTop_toBottomOf="@id/year"
+                tools:text="Transmission:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/drivetrain"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(@string/car_drivetrain(@stringArray/car_drivetrain_types[car.drivetrain]))}"
+                app:layout_constraintEnd_toStartOf="@+id/transmission"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/year"
+                tools:text="Gear:" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description"
+                style="@style/CarTechnicalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:text="@{car.description}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/drivetrain" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/editButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Edit"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic__edit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description"
+                app:strokeWidth="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Delete"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editButton"
+                app:layout_constraintTop_toBottomOf="@id/description"
+                app:strokeWidth="0dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

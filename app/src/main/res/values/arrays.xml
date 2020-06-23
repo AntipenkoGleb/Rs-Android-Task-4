@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="car_body_types">
+        <item>@string/car_body_hatchback</item>
+        <item>@string/car_body_sedan</item>
+        <item>@string/car_body_muv</item>
+        <item>@string/car_body_coupe</item>
+        <item>@string/car_body_convertible</item>
+        <item>@string/car_body_wagon</item>
+        <item>@string/car_body_van</item>
+        <item>@string/car_body_jeep</item>
+    </string-array>
+
+    <string-array name="car_transmission_types">
+        <item>@string/car_transmission_manual</item>
+        <item>@string/car_transmission_automatic</item>
+        <item>@string/car_transmission_continuously</item>
+        <item>@string/car_transmission_semi</item>
+        <item>@string/car_transmission_dual</item>
+    </string-array>
+
+    <string-array name="car_drivetrain_types">
+        <item>@string/car_drivetrain_two</item>
+        <item>@string/car_drivetrain_four</item>
+    </string-array>
+
+    <string-array name="car_colors">
+        <item>@string/color_red</item>
+        <item>@string/color_orange</item>
+        <item>@string/color_yellow</item>
+        <item>@string/color_green</item>
+        <item>@string/color_blue</item>
+        <item>@string/color_purple</item>
+        <item>@string/color_white</item>
+        <item>@string/color_gray</item>
+        <item>@string/color_black</item>
+    </string-array>
+
+    <string-array name="car_makers_name">
+        <item>Acura</item>
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Buick</item>
+        <item>Cadillac</item>
+        <item>Chevrolet</item>
+        <item>Citroen</item>
+        <item>Ferrari</item>
+        <item>Ford</item>
+        <item>Holden</item>
+        <item>Honda</item>
+        <item>Hyundai</item>
+        <item>Infiniti</item>
+        <item>Jeep</item>
+        <item>Lexus</item>
+        <item>Mazda</item>
+        <item>Mercedes-benz</item>
+        <item>Mercury</item>
+        <item>Mini</item>
+        <item>Mitsubishi</item>
+        <item>Nissan</item>
+        <item>Opel</item>
+        <item>Peugeot</item>
+        <item>Pontiac</item>
+        <item>Porsche</item>
+        <item>Renault</item>
+        <item>Subaru</item>
+        <item>Suzuki</item>
+        <item>Tesla</item>
+        <item>Toyota</item>
+        <item>Volkswagen</item>
+        <item>Volvo</item>
+    </string-array>
+
+    <array name="car_makers_logo">
+        <item>@drawable/logo_acura</item>
+        <item>@drawable/logo_audi</item>
+        <item>@drawable/logo_bmw</item>
+        <item>@drawable/logo_buick</item>
+        <item>@drawable/logo_cadillac</item>
+        <item>@drawable/logo_chevrolet</item>
+        <item>@drawable/logo_citroen</item>
+        <item>@drawable/logo_ferrari</item>
+        <item>@drawable/logo_ford</item>
+        <item>@drawable/logo_holden</item>
+        <item>@drawable/logo_honda</item>
+        <item>@drawable/logo_hyundai</item>
+        <item>@drawable/logo_infiniti</item>
+        <item>@drawable/logo_jeep</item>
+        <item>@drawable/logo_lexus</item>
+        <item>@drawable/logo_mazda</item>
+        <item>@drawable/logo_mercedesbenz</item>
+        <item>@drawable/logo_mercury</item>
+        <item>@drawable/logo_mini</item>
+        <item>@drawable/logo_mitsubishi</item>
+        <item>@drawable/logo_nissan</item>
+        <item>@drawable/logo_opel</item>
+        <item>@drawable/logo_peugeot</item>
+        <item>@drawable/logo_pontiac</item>
+        <item>@drawable/logo_porsche</item>
+        <item>@drawable/logo_renault</item>
+        <item>@drawable/logo_subaru</item>
+        <item>@drawable/logo_suzuki</item>
+        <item>@drawable/logo_tesla</item>
+        <item>@drawable/logo_toyota</item>
+        <item>@drawable/logo_volkswagen</item>
+        <item>@drawable/logo_volvo</item>
+    </array>
+</resources>

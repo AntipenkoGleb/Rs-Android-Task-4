@@ -1,0 +1,57 @@
+package by.agd.rsandroidtask4.binding
+
+import android.content.res.TypedArray
+import android.net.Uri
+import android.widget.AutoCompleteTextView
+import androidx.annotation.ArrayRes
+import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.databinding.BindingAdapter
+import by.agd.rsandroidtask4.R
+import by.agd.rsandroidtask4.adapter.DropDownImageListAdapter
+import by.agd.rsandroidtask4.adapter.DropDownListAdapter
+import coil.api.load
+import com.google.android.material.textfield.TextInputLayout
+import java.text.DecimalFormat
+
+
+@BindingAdapter("setItemList", "setImageList", requireAll = false)
+fun setItemList(view: AutoCompleteTextView, @ArrayRes itemsId: Int, @ArrayRes imagesId: Int?) {
+    val context = view.context
+    val resources = context.resources
+    val textInputLayout = view.parent.parent as TextInputLayout
+
+    val items = resources.getStringArray(itemsId).toList()
+    val images: TypedArray? = if (imagesId != null) resources.obtainTypedArray(imagesId) else null
+
+    val adapter = if (images == null) DropDownListAdapter(context, R.layout.list_item, items)
+    else DropDownImageListAdapter(context, R.layout.image_list_item, items, images)
+
+    view.apply {
+        setAdapter(adapter)
+        setOnItemClickListener { _, _, _, id ->
+            images?.let { textInputLayout.startIconDrawable = images.getDrawable(id.toInt()) }
+            adapter.resetFilter()
+        }
+    }
+}
+
+@BindingAdapter("setImageSrcFromUri", "placeholder", "errorDrawable", requireAll = false)
+fun setImageSrcFromUri(
+    view: AppCompatImageView,
+    uri: Uri,
+    @DrawableRes placeholderResId: Int?,
+    @DrawableRes errorResId: Int?
+) {
+    view.load(uri) {
+        placeholderResId?.let { this.placeholder(it) }
+        errorResId?.let { error(it) }
+    }
+}
+
+object Converter {
+    @JvmStatic
+    fun decimalFormat(value: Any, pattern: String): String {
+        return DecimalFormat(pattern).format(value)
+    }
+}

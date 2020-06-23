@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">Rs Android Task 4</string>
+
+    <string name="car_name">%1$s %2$s</string>
+    <string name="car_price">$%1$s</string>
+    <string name="car_body">&lt;font color="#000">Body: &lt;/font>%1$s</string>
+    <string name="car_color">&lt;font color="#000">Color: &lt;/font>%1$s</string>
+    <string name="car_year">&lt;font color="#000">Year: &lt;/font>%1$d</string>
+    <string name="car_mileage">&lt;font color="#000">Mileage: &lt;/font>%1$d</string>
+    <string name="car_transmission">&lt;font color="#000">Transmission: &lt;/font>%1$s</string>
+    <string name="car_drivetrain">&lt;font color="#000">Drivetrain: &lt;/font>%1$s</string>
+
+    <string name="car_body_hatchback">Hatchback</string>
+    <string name="car_body_sedan">Sedan</string>
+    <string name="car_body_muv">MUV/SUV</string>
+    <string name="car_body_coupe">Coupe</string>
+    <string name="car_body_convertible">Convertible</string>
+    <string name="car_body_wagon">Wagon</string>
+    <string name="car_body_van">Van</string>
+    <string name="car_body_jeep">Jeep</string>
+
+    <string name="car_transmission_manual">Manual</string>
+    <string name="car_transmission_automatic">Automatic</string>
+    <string name="car_transmission_continuously">Continuously</string>
+    <string name="car_transmission_semi">Semi-automatic</string>
+    <string name="car_transmission_dual">Dual-clutch</string>
+
+    <string name="car_drivetrain_two">Two-wheel drive</string>
+    <string name="car_drivetrain_four">Four-wheel drive</string>
+
+    <string name="color_red">Red</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_green">Green</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_white">White</string>
+    <string name="color_gray">Gray</string>
+    <string name="color_black">Black</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vivamus bibendum, ligula vel dictum vehicula, neque elit porttitor lacus,
+        in rutrum mauris turpis sed leo. Etiam auctor sodales ligula sit amet efficitur.
+        Aliquam iaculis lacus vel nisi malesuada eleifend. Mauris efficitur dapibus nunc sed lacinia.
+        Nunc aliquet bibendum lectus vitae tincidunt.
+    </string>
 </resources>
