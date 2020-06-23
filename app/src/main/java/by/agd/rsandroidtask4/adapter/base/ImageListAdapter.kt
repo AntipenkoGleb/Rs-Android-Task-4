@@ -14,7 +14,7 @@ abstract class ImageListAdapter<T : ViewDataBinding>(
 ) : DataBindingDropDownListAdapter<T>(context, layoutResId, items) {
 
     override fun onViewBinned(binding: T, item: String, position: Int) {
-        val image = images.getDrawable(position)
+        val image = images.getDrawable(getItemId(position).toInt())
         onViewBinned(binding, item, image, position)
     }
 

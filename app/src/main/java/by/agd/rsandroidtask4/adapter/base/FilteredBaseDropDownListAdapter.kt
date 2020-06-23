@@ -14,11 +14,11 @@ abstract class FilteredBaseDropDownListAdapter(
 
     private val filteredItems: MutableList<String> = ArrayList(items)
 
-    override fun getItem(position: Int): String = items[position]
+    override fun getItem(position: Int): String = filteredItems[position]
 
-    override fun getItemId(position: Int): Long = items.indexOf(items[position]).toLong()
+    override fun getItemId(position: Int): Long = items.indexOf(filteredItems[position]).toLong()
 
-    override fun getCount(): Int = items.size
+    override fun getCount(): Int = filteredItems.size
 
     fun resetFilter() = clearAndAddAll(items)
 

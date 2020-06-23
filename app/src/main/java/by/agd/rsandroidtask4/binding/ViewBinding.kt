@@ -3,7 +3,6 @@ package by.agd.rsandroidtask4.binding
 import android.content.res.TypedArray
 import android.net.Uri
 import android.widget.AutoCompleteTextView
-import androidx.annotation.ArrayRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
@@ -16,16 +15,16 @@ import java.text.DecimalFormat
 
 
 @BindingAdapter("setItemList", "setImageList", requireAll = false)
-fun setItemList(view: AutoCompleteTextView, @ArrayRes itemsId: Int, @ArrayRes imagesId: Int?) {
+fun setItemList(view: AutoCompleteTextView, items: Array<String>, images: TypedArray?) {
     val context = view.context
     val resources = context.resources
     val textInputLayout = view.parent.parent as TextInputLayout
 
-    val items = resources.getStringArray(itemsId).toList()
-    val images: TypedArray? = if (imagesId != null) resources.obtainTypedArray(imagesId) else null
+    val items  = items.toList()
 
-    val adapter = if (images == null) DropDownListAdapter(context, R.layout.list_item, items)
-    else DropDownImageListAdapter(context, R.layout.image_list_item, items, images)
+    val adapter =
+        if (images == null) DropDownListAdapter(context, R.layout.list_item, items)
+        else DropDownImageListAdapter(context, R.layout.image_list_item, items, images)
 
     view.apply {
         setAdapter(adapter)
