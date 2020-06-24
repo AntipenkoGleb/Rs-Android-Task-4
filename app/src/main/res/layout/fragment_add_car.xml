@@ -5,7 +5,11 @@
 
     <data>
 
-        <import type="by.agd.rsandroidtask4.R" />
+        <import type="by.agd.rsandroidtask4.binding.Converter" />
+
+        <variable
+            name="viewModel"
+            type="by.agd.rsandroidtask4.view.addcar.AddCarViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:nextFocusRight="@id/textInputLayout2"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.car.model}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -93,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:inputType="numberDecimal|numberSigned"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={Converter.floatToString(viewModel.car.price)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -119,7 +125,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={Converter.intToString(viewModel.car.year)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -146,7 +153,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={Converter.intToString(viewModel.car.mileage)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -168,10 +176,12 @@
             app:layout_constraintTop_toBottomOf="@id/textInputLayout3">
 
             <AutoCompleteTextView
+                onItemClickListener='@{(v, pos, p, id) ->Converter.debug("Hello",id)}'
                 setItemList="@{@stringArray/car_body_types}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:cursorVisible="false" />
+                android:editable="false"
+                tools:ignore="Deprecated" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -193,6 +203,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
             <AutoCompleteTextView
+                selected="@={viewModel.car.color}"
                 setItemList="@{@stringArray/car_colors}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
