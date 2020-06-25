@@ -38,16 +38,6 @@
     <string name="color_gray">Gray</string>
     <string name="color_black">Black</string>
 
-    <string name="sort_by_price">Price</string>
-    <string name="sort_by_car_maker">Car maker</string>
-    <string name="sort_by_none">None</string>
-
-    <string-array name="pref_order_by">
-        <item>@string/sort_by_none</item>
-        <item>@string/sort_by_car_maker</item>
-        <item>@string/sort_by_price</item>
-    </string-array>
-
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Vivamus bibendum, ligula vel dictum vehicula, neque elit porttitor lacus,
         in rutrum mauris turpis sed leo. Etiam auctor sodales ligula sit amet efficitur.

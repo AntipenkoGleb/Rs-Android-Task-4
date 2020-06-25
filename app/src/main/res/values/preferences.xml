@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Enable sorting  -->
+
+    <string name="pref_sorting_enabled_key">sorting_enabled</string>
+    <string name="pref_sorting_enabled_title">Enable sorting</string>
+
+    <!--  Sorting field  -->
+
+    <string name="pref_sorting_field_key">sorting_field</string>
+    <string name="pref_sorting_field_title">Field</string>
+
+    <string name="summary_sorting_field_format">Sorting by: %1$s</string>
+
+    <string name="entry_sorting_field_price">Price</string>
+    <string name="entry_sorting_field_car_maker">Car maker</string>
+    <string name="entry_sorting_field_year">Year</string>
+    <string name="entry_sorting_field_mileage">Mileage</string>
+
+    <string name="entry_value_sorting_field_price">price</string>
+    <string name="entry_value_sorting_field_car_maker">car_maker</string>
+    <string name="entry_value_sorting_field_year">year</string>
+    <string name="entry_value_sorting_field_mileage">mileage</string>
+
+    <string-array name="pref_sorting_entries">
+        <item>@string/entry_sorting_field_car_maker</item>
+        <item>@string/entry_sorting_field_price</item>
+        <item>@string/entry_sorting_field_year</item>
+        <item>@string/entry_sorting_field_mileage</item>
+    </string-array>
+
+    <string-array name="pref_sorting_entry_values">
+        <item>@string/entry_value_sorting_field_car_maker</item>
+        <item>@string/entry_value_sorting_field_price</item>
+        <item>@string/entry_value_sorting_field_year</item>
+        <item>@string/entry_value_sorting_field_mileage</item>
+    </string-array>
+
+    <!--  Sorting order  -->
+
+    <string name="pref_sorting_order_key">sorting_order</string>
+    <string name="pref_sorting_order_title">Order</string>
+
+    <string name="summary_sorting_order_format">Order by: %1$s</string>
+
+    <string name="entry_sorting_order_asc">ASC</string>
+    <string name="entry_sorting_order_desc">DESC</string>
+
+    <string-array name="pref_sorting_order_entries">
+        <item>@string/entry_sorting_order_asc</item>
+        <item>@string/entry_sorting_order_desc</item>
+    </string-array>
+</resources>

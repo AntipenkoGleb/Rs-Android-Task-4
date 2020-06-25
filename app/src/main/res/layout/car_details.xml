@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -23,12 +22,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/carMakerInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_large"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Car maker"
             app:helperText="*Required"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,55 +36,42 @@
             app:startIconTintMode="screen">
 
             <AutoCompleteTextView
+                style="@style/AppTheme.App.EditText.NoEdit"
                 setImageList="@{@typedArray/car_makers_logo}"
                 setItemList="@{@stringArray/car_makers_name}"
                 setSelected="@={viewModel.car.carMaker}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:singleLine="true" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/modelInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Model"
-            app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/priceInputLayout"
             app:layout_constraintHorizontal_bias="0.5"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/carMakerInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/AppTheme.App.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="text"
-                android:nextFocusRight="@id/priceInputLayout"
-                android:singleLine="true"
                 android:text="@={viewModel.car.model}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/priceInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:focusable="true"
             android:hint="Price"
-            android:nextFocusDown="@id/yearInputLayout"
-            app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,26 +81,20 @@
             app:prefixText="$">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/AppTheme.App.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:inputType="numberDecimal|numberSigned"
-                android:singleLine="true"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal"
                 android:text="@={ViewBindingConverter.floatToString(viewModel.car.price)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/yearInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Year"
-            android:nextFocusDown="@id/mileageInputLayout"
-            app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/mileageInputLayout"
@@ -125,25 +103,20 @@
             app:layout_constraintTop_toBottomOf="@id/modelInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/AppTheme.App.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberSigned"
-                android:singleLine="true"
+                android:layout_height="match_parent"
+                android:inputType="number"
                 android:text="@={ViewBindingConverter.intToString(viewModel.car.year)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mileageInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Mileage"
-            android:nextFocusDown="@id/bodyInputLayout"
-            app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -153,23 +126,19 @@
             app:suffixText="km">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/AppTheme.App.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberSigned"
-                android:singleLine="true"
+                android:layout_height="match_parent"
+                android:inputType="number"
                 android:text="@={ViewBindingConverter.intToString(viewModel.car.mileage)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/bodyInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Body"
-            app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/colorInputLayout"
@@ -178,24 +147,19 @@
             app:layout_constraintTop_toBottomOf="@id/yearInputLayout">
 
             <AutoCompleteTextView
+                style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_body_types}"
                 setSelected="@={viewModel.car.body}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                android:inputType="none"
-                tools:ignore="Deprecated" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/colorInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Color"
             app:boxBackgroundMode="outline"
             app:helperText="*Required"
@@ -216,12 +180,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/transmissionInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
             android:hint="Transmission: "
             app:boxBackgroundMode="outline"
             app:helperText="*Required"
@@ -232,25 +193,20 @@
             app:layout_constraintTop_toBottomOf="@id/bodyInputLayout">
 
             <AutoCompleteTextView
+                style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_transmission_types}"
                 setSelected="@={viewModel.car.transmission}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                android:inputType="none"
-                tools:ignore="Deprecated" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/drivetrainInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:hint="Drivetrain: "
+            android:hint="Drivetrain"
             app:boxBackgroundMode="outline"
             app:helperText="*Required"
             app:hintEnabled="true"
@@ -260,13 +216,11 @@
             app:layout_constraintTop_toBottomOf="@+id/colorInputLayout">
 
             <AutoCompleteTextView
+                style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_drivetrain_types}"
                 setSelected="@={viewModel.car.drivetrain}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                android:inputType="none"
-                tools:ignore="Deprecated" />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -295,7 +249,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/descriptionInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_large"
@@ -307,10 +261,10 @@
             app:layout_constraintTop_toBottomOf="@id/selectImageButton">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/AppTheme.App.EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberSigned"
-                android:minLines="3"
+                android:layout_height="match_parent"
+                android:inputType="text"
                 android:text="@={viewModel.car.description}" />
         </com.google.android.material.textfield.TextInputLayout>
 

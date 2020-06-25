@@ -15,7 +15,6 @@ class AddCarViewModel(private val repository: BaseCarRepository) : ViewModel() {
 
     val car = MutableLiveData(Car())
 
-
     fun addCar() {
         viewModelScope.launch(viewModelCoroutineContext) {
             repository.insert(car.value!!)
