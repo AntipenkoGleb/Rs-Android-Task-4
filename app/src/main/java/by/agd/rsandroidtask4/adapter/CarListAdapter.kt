@@ -4,7 +4,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.agd.rsandroidtask4.model.Car
 
-class CarListAdapter(private val list: List<Car>) : RecyclerView.Adapter<CarViewHolder>() {
+class CarListAdapter(private var list: List<Car>) : RecyclerView.Adapter<CarViewHolder>() {
+
+    fun setItems(items: List<Car>) {
+        list = items
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         return CarViewHolder.inflate(parent)

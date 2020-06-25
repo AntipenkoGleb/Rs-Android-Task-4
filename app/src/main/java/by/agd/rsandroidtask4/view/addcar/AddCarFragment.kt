@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.agd.rsandroidtask4.databinding.FragmentAddCarBinding
+import by.agd.rsandroidtask4.repository.CarOpenHelperRepository
 
 class AddCarFragment : Fragment() {
 
     private var _binding: FragmentAddCarBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: AddCarViewModel by viewModels()
+    private val viewModel: AddCarViewModel by viewModels {
+        AddCarViewModelFactory(CarOpenHelperRepository())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

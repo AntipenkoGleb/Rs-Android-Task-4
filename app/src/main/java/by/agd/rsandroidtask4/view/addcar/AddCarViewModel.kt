@@ -1,23 +1,23 @@
 package by.agd.rsandroidtask4.view.addcar
 
-import androidx.databinding.BaseObservable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import by.agd.rsandroidtask4.model.Car
+import by.agd.rsandroidtask4.repository.BaseCarRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class AddCarViewModel : ViewModel() {
+class AddCarViewModel(private val repository: BaseCarRepository) : ViewModel() {
+
+    private val viewModelCoroutineContext = viewModelScope.coroutineContext + Dispatchers.IO
 
     val car = MutableLiveData(Car())
 
-//    private val car: Car = Car()
-//
-//    @Bindable
-//    fun getPrice(): Float {
-//        return car.price
-//    }
-//
-//    fun setPrice(price: Float) {
-//        if (car.price != price) car.price = price
-//    }
+    fun addClick() {
+        viewModelScope.launch(viewModelCoroutineContext) {
+            repository.insert(car.value!!)
+        }
+    }
 }
+

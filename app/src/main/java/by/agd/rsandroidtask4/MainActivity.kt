@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import by.agd.rsandroidtask4.database.CarDatabase
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             navController.navigateUp()
         }
+        CarDatabase.init(applicationContext)
     }
 }

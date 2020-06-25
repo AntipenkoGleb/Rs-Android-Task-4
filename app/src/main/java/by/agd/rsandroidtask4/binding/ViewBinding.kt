@@ -1,17 +1,20 @@
 package by.agd.rsandroidtask4.binding
 
 import android.app.Activity
+import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.databinding.*
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
+import androidx.databinding.InverseMethod
 import by.agd.rsandroidtask4.R
 import by.agd.rsandroidtask4.adapter.DataBindingArrayAdapter
 import by.agd.rsandroidtask4.databinding.ListImageItemBinding
@@ -25,27 +28,61 @@ import java.text.DecimalFormat
 @BindingAdapter(
     "setItemList",
     "setImageList",
-    "selected",
+    "setSelected",
     "selectedAttrChanged",
-    "onItemClickListener",
     requireAll = false
 )
 fun setItemList(
     view: AutoCompleteTextView,
     itemArray: Array<String>,
     imageArray: TypedArray?,
-    selected: Int?,
-    selectedAttrChanged: InverseBindingListener?,
-    onItemClickListener: AdapterView.OnItemClickListener?
+    selectedItemId: Int?,
+    selectedAttrChanged: InverseBindingListener?
 ) {
-    val context = view.context
+    val textInputLayout = view.parent.parent as TextInputLayout
 
-    val adapter = if (imageArray == null) {
+    val adapter = getAdapter(view.context, itemArray, imageArray)
+    view.setAdapter(adapter)
+
+    if (selectedItemId == null || selectedItemId < 0) {
+        view.setText("")
+    } else {
+        val item = itemArray[selectedItemId]
+        if (view.text.toString() != item) {
+            if (imageArray != null)
+                textInputLayout.startIconDrawable = imageArray.getDrawable(selectedItemId)
+            view.setText(item)
+        }
+    }
+
+    view.setOnItemClickListener { _view, _, _, id ->
+        if (imageArray != null)
+            textInputLayout.startIconDrawable = imageArray.getDrawable(id.toInt())
+
+        clearFocusAndHideKeyboard(_view)
+
+        selectedAttrChanged?.onChange()
+    }
+}
+
+@InverseBindingAdapter(attribute = "setSelected", event = "selectedAttrChanged")
+fun getSelected(view: AutoCompleteTextView): Int {
+    val adapter = view.adapter as DataBindingArrayAdapter<*, *>
+    return adapter.getIdByText(view.text.toString())
+}
+
+private fun getAdapter(
+    context: Context,
+    itemArray: Array<String>,
+    imageArray: TypedArray?
+): ArrayAdapter<*> {
+    return if (imageArray == null) {
         DataBindingArrayAdapter<String, ListItemBinding>(context, R.layout.list_item, itemArray)
             .onViewBinded { binding, item, _ -> binding.itemName.text = item }
     } else {
-        val items = itemArray.mapIndexed { i, v -> ImageListItem(v, imageArray.getDrawable(i)) }
-            .toTypedArray()
+        val items = itemArray.mapIndexed { index, item ->
+            ImageListItem(item, imageArray.getDrawable(index))
+        }.toTypedArray()
 
         DataBindingArrayAdapter<ImageListItem<String, Drawable?>, ListImageItemBinding>(
             context,
@@ -56,33 +93,8 @@ fun setItemList(
             binding.itemImage.setImageDrawable(item.second)
         }
     }
-
-    val textInputLayout = view.parent.parent as TextInputLayout
-    view.apply {
-        setAdapter(adapter)
-        selected?.let {
-            if (view.text.toString().isBlank()) {
-                if (imageArray != null)
-                    textInputLayout.startIconDrawable = imageArray.getDrawable(id)
-                if (selected > 0)
-                    view.setText(itemArray[it])
-            }
-        }
-        setOnItemClickListener { v, pos, p, id ->
-            if (imageArray != null)
-                textInputLayout.startIconDrawable = imageArray.getDrawable(id.toInt())
-
-            clearFocusAndHideKeyboard(view)
-            selectedAttrChanged?.onChange()
-            onItemClickListener?.onItemClick(v, pos, p, id)
-        }
-    }
 }
 
-@BindingAdapter("selected")
-fun setSelected(){
-
-}
 
 private fun clearFocusAndHideKeyboard(view: View) {
     val imm = view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -90,10 +102,7 @@ private fun clearFocusAndHideKeyboard(view: View) {
     view.clearFocus()
 }
 
-data class ImageListItem<out A, out B>(
-    val first: A,
-    val second: B
-) : Serializable {
+data class ImageListItem<out A, out B>(val first: A, val second: B) : Serializable {
     override fun toString(): String = first.toString()
 }
 
@@ -113,25 +122,19 @@ fun setImageSrcFromUri(
 
 object Converter {
 
-    @BindingAdapter("selected")
-    @JvmStatic
-    fun setSelected(view: AutoCompleteTextView, newValue: Int) {
-        val adapter = view.adapter as DataBindingArrayAdapter<*, *>
-        if (newValue > 0) {
-            val item = adapter.getItemById(newValue)
-            if (view.text.toString() != item.toString()) {
-                view.setText(item.toString())
-            }
-        } else
-            view.setText("")
-    }
+//    @BindingAdapter("setSelected")
+//    @JvmStatic
+//    fun setSelected(view: AutoCompleteTextView, newValue: Int) {
+//        val adapter = view.adapter as DataBindingArrayAdapter<*, *>
+//        if (newValue > 0) {
+//            val item = adapter.getItemById(newValue)
+//            if (view.text.toString() != item.toString()) {
+//                view.setText(item.toString())
+//            }
+//        } else
+//            view.setText("")
+//    }
 
-    @InverseBindingAdapter(attribute = "selected", event = "selectedAttrChanged")
-    @JvmStatic
-    fun getSelected(view: AutoCompleteTextView): Int {
-        val adapter = view.adapter as DataBindingArrayAdapter<*, *>
-        return adapter.getIdByText(view.text.toString())
-    }
 
     @JvmStatic
     @InverseMethod("floatFromString")
@@ -159,12 +162,4 @@ object Converter {
     fun decimalFormat(value: Any, pattern: String): String {
         return DecimalFormat(pattern).format(value)
     }
-
-    @JvmStatic
-    fun debug(tag: String, message: Any) {
-        Log.d(tag, message.toString())
-    }
 }
-
-@BindingConversion
-fun floatToString(value: Float) = value.toString()

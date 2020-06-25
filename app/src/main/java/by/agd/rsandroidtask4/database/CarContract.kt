@@ -7,7 +7,7 @@ object CarContract {
     const val SQL_CREATE_TABLE =
         "CREATE TABLE ${CarEntry.TABLE_NAME} (" +
                 "${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                "${CarEntry.COLUMN_NAME_CAR_MAKE} INTEGER NOT NULL," +
+                "${CarEntry.COLUMN_NAME_CAR_MAKER} INTEGER NOT NULL," +
                 "${CarEntry.COLUMN_NAME_MODEL} TEXT NOT NULL," +
                 "${CarEntry.COLUMN_NAME_PRICE} REAL NOT NULL," +
                 "${CarEntry.COLUMN_NAME_IMAGE_URI} TEXT," +
@@ -23,7 +23,7 @@ object CarContract {
 
     object CarEntry : BaseColumns {
         const val TABLE_NAME = "car"
-        const val COLUMN_NAME_CAR_MAKE = "car_make"
+        const val COLUMN_NAME_CAR_MAKER = "car_maker"
         const val COLUMN_NAME_MODEL = "model"
         const val COLUMN_NAME_PRICE = "price"
         const val COLUMN_NAME_IMAGE_URI = "image_uri"
