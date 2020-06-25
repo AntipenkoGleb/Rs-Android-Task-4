@@ -16,7 +16,7 @@ import by.agd.rsandroidtask4.repository.CarOpenHelperRepository
 class CarListFragment : Fragment() {
 
     private val viewModel: CarListViewModel by viewModels {
-        CarListViewModelFactory(CarOpenHelperRepository())
+        CarListViewModelFactory(CarOpenHelperRepository(requireActivity()))
     }
 
     private var _binding: FragmentCarListBinding? = null

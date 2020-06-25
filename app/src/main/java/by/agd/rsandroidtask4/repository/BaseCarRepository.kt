@@ -1,6 +1,5 @@
 package by.agd.rsandroidtask4.repository
 
-import androidx.lifecycle.LiveData
 import by.agd.rsandroidtask4.model.Car
 
 interface BaseCarRepository {

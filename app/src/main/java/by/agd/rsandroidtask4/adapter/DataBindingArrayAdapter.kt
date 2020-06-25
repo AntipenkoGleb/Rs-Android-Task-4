@@ -39,11 +39,12 @@ class DataBindingArrayAdapter<T, T1 : ViewDataBinding>(
     }
 
     fun getIdByText(text: String): Int {
-        val item = items.firstOrNull { it.toString() == text } ?: return -1
+        val item = items.firstOrNull { it.toString().equals(text, true) } ?: return -1
         return items.indexOf(item)
     }
 
-    fun getItemById(id: Int): T {
-        return items[id]
+
+    fun contains(content: Any): Int {
+        return items.indexOfFirst { it.toString().equals(content.toString(), true) }
     }
 }

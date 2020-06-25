@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference
-        android:key="pref_key_auto_delete"
-        android:summary="Hello"
-        android:title="World"
-        android:defaultValue="false"/>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/pref_order_by"
+        android:entryValues="@array/pref_order_by"
+        android:key="pref_order_by"
+        android:title="Sort By" />
 </PreferenceScreen>

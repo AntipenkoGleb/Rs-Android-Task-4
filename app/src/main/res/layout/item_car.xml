@@ -7,7 +7,7 @@
 
         <import type="android.text.Html" />
 
-        <import type="by.agd.rsandroidtask4.binding.Converter" />
+        <import type="by.agd.rsandroidtask4.binding.ViewBindingConverter" />
 
         <variable
             name="car"
@@ -59,7 +59,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:fontFamily="@font/asap"
-                android:text='@{@string/car_price(Converter.decimalFormat(car.price, "#,###,###.00"))}'
+                android:text='@{@string/car_price(ViewBindingConverter.decimalFormat(car.price, "###,###,##0.00"))}'
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +70,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image"
+                setImageUri="@{car.imageUri}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:paddingTop="@dimen/padding_medium"
@@ -78,8 +79,7 @@
                 app:layout_constraintDimensionRatio="w,9:16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/price"
-                app:srcCompat="@drawable/mercedes" />
+                app:layout_constraintTop_toBottomOf="@+id/price" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/body"

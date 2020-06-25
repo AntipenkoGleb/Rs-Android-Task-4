@@ -7,22 +7,18 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import androidx.annotation.DrawableRes
-import androidx.appcompat.widget.AppCompatImageView
+import android.widget.ImageView
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
-import androidx.databinding.InverseMethod
 import by.agd.rsandroidtask4.R
 import by.agd.rsandroidtask4.adapter.DataBindingArrayAdapter
 import by.agd.rsandroidtask4.databinding.ListImageItemBinding
 import by.agd.rsandroidtask4.databinding.ListItemBinding
 import coil.api.load
 import com.google.android.material.textfield.TextInputLayout
-import java.io.Serializable
-import java.text.DecimalFormat
 
 
 @BindingAdapter(
@@ -55,27 +51,43 @@ fun setItemList(
         }
     }
 
-    view.setOnItemClickListener { _view, _, _, id ->
-        if (imageArray != null)
-            textInputLayout.startIconDrawable = imageArray.getDrawable(id.toInt())
+    view.addTextChangedListener {
+        val containsId = adapter.contains(it.toString())
+        if (containsId >= 0) {
+            if (imageArray != null)
+                textInputLayout.startIconDrawable = imageArray.getDrawable(containsId)
+            selectedAttrChanged?.onChange()
+        }
+    }
 
-        clearFocusAndHideKeyboard(_view)
+    view.setOnItemClickListener { _, _, position, _ ->
+        if (imageArray != null)
+            textInputLayout.startIconDrawable = imageArray.getDrawable(adapter.getItemId(position).toInt())
 
         selectedAttrChanged?.onChange()
+
+        clearFocusAndHideKeyboard(view)
     }
 }
 
 @InverseBindingAdapter(attribute = "setSelected", event = "selectedAttrChanged")
 fun getSelected(view: AutoCompleteTextView): Int {
     val adapter = view.adapter as DataBindingArrayAdapter<*, *>
-    return adapter.getIdByText(view.text.toString())
+    return adapter.getIdByText(view.text.toString().toLowerCase())
+}
+
+@BindingAdapter("setImageUri")
+fun setImageUri(view: ImageView, uri: Uri) {
+    view.load(uri) {
+        error(R.drawable.car_placeholder)
+    }
 }
 
 private fun getAdapter(
     context: Context,
     itemArray: Array<String>,
     imageArray: TypedArray?
-): ArrayAdapter<*> {
+): DataBindingArrayAdapter<*, *> {
     return if (imageArray == null) {
         DataBindingArrayAdapter<String, ListItemBinding>(context, R.layout.list_item, itemArray)
             .onViewBinded { binding, item, _ -> binding.itemName.text = item }
@@ -102,64 +114,4 @@ private fun clearFocusAndHideKeyboard(view: View) {
     view.clearFocus()
 }
 
-data class ImageListItem<out A, out B>(val first: A, val second: B) : Serializable {
-    override fun toString(): String = first.toString()
-}
 
-
-@BindingAdapter("setImageSrcFromUri", "placeholder", "errorDrawable", requireAll = false)
-fun setImageSrcFromUri(
-    view: AppCompatImageView,
-    uri: Uri,
-    @DrawableRes placeholderResId: Int?,
-    @DrawableRes errorResId: Int?
-) {
-    view.load(uri) {
-        placeholderResId?.let { this.placeholder(it) }
-        errorResId?.let { error(it) }
-    }
-}
-
-object Converter {
-
-//    @BindingAdapter("setSelected")
-//    @JvmStatic
-//    fun setSelected(view: AutoCompleteTextView, newValue: Int) {
-//        val adapter = view.adapter as DataBindingArrayAdapter<*, *>
-//        if (newValue > 0) {
-//            val item = adapter.getItemById(newValue)
-//            if (view.text.toString() != item.toString()) {
-//                view.setText(item.toString())
-//            }
-//        } else
-//            view.setText("")
-//    }
-
-
-    @JvmStatic
-    @InverseMethod("floatFromString")
-    fun floatToString(value: Float): String {
-        return value.toString()
-    }
-
-    @JvmStatic
-    fun floatFromString(value: String): Float {
-        return value.toFloatOrNull() ?: 0f
-    }
-
-    @JvmStatic
-    @InverseMethod("intFromString")
-    fun intToString(value: Int): String {
-        return value.toString()
-    }
-
-    @JvmStatic
-    fun intFromString(value: String): Int {
-        return value.toIntOrNull() ?: 0
-    }
-
-    @JvmStatic
-    fun decimalFormat(value: Any, pattern: String): String {
-        return DecimalFormat(pattern).format(value)
-    }
-}

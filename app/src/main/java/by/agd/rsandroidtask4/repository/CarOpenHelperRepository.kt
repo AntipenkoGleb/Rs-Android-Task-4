@@ -1,16 +1,18 @@
 package by.agd.rsandroidtask4.repository
 
+import android.app.Activity
+import android.content.Context
 import by.agd.rsandroidtask4.database.CarContract.CarEntry
 import by.agd.rsandroidtask4.database.CarDatabase
 import by.agd.rsandroidtask4.model.Car
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CarOpenHelperRepository : BaseCarRepository {
+class CarOpenHelperRepository(private val activity: Activity) : BaseCarRepository {
 
     override suspend fun getAll(): List<Car> {
         val cars = mutableListOf<Car>()
-
+        val preferences = activity.getPreferences(Context.MODE_PRIVATE)
         CarDatabase.getInstance()?.readableDatabase.use { db ->
             val cursor = db?.query(CarEntry.TABLE_NAME, null, null, null, null, null, null)
             cursor?.use {
