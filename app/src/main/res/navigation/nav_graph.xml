@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/carListFragment"
         android:name="by.agd.rsandroidtask4.view.carlist.CarListFragment"
-        android:label="fragment_car_list"
+        android:label="@string/fragment_car_list_label"
         tools:layout="@layout/fragment_car_list">
         <action
             android:id="@+id/action_carListFragment_to_addCarFragment"
@@ -28,10 +28,10 @@
     <fragment
         android:id="@+id/addCarFragment"
         android:name="by.agd.rsandroidtask4.view.addcar.AddCarFragment"
-        android:label="AddCarFragment"
+        android:label="@string/fragment_add_car_label"
         tools:layout="@layout/fragment_add_car" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="by.agd.rsandroidtask4.view.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="@string/fragment_settings_label" />
 </navigation>

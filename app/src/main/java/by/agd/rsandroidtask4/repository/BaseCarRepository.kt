@@ -6,6 +6,5 @@ interface BaseCarRepository {
 
     suspend fun getAll(): List<Car>
 
-    suspend fun insert(car: Car): Long?
-
+     suspend fun insert(car: Car): Long?
 }

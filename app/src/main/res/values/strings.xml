@@ -10,24 +10,6 @@
     <string name="car_transmission">&lt;font color="#000">Transmission: &lt;/font>%1$s</string>
     <string name="car_drivetrain">&lt;font color="#000">Drivetrain: &lt;/font>%1$s</string>
 
-    <string name="car_body_hatchback">Hatchback</string>
-    <string name="car_body_sedan">Sedan</string>
-    <string name="car_body_muv">MUV/SUV</string>
-    <string name="car_body_coupe">Coupe</string>
-    <string name="car_body_convertible">Convertible</string>
-    <string name="car_body_wagon">Wagon</string>
-    <string name="car_body_van">Van</string>
-    <string name="car_body_jeep">Jeep</string>
-
-    <string name="car_transmission_manual">Manual</string>
-    <string name="car_transmission_automatic">Automatic</string>
-    <string name="car_transmission_continuously">Continuously</string>
-    <string name="car_transmission_semi">Semi-automatic</string>
-    <string name="car_transmission_dual">Dual-clutch</string>
-
-    <string name="car_drivetrain_two">Two-wheel drive</string>
-    <string name="car_drivetrain_four">Four-wheel drive</string>
-
     <string name="color_red">Red</string>
     <string name="color_orange">Orange</string>
     <string name="color_yellow">Yellow</string>
@@ -38,10 +20,42 @@
     <string name="color_gray">Gray</string>
     <string name="color_black">Black</string>
 
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Vivamus bibendum, ligula vel dictum vehicula, neque elit porttitor lacus,
-        in rutrum mauris turpis sed leo. Etiam auctor sodales ligula sit amet efficitur.
-        Aliquam iaculis lacus vel nisi malesuada eleifend. Mauris efficitur dapibus nunc sed lacinia.
-        Nunc aliquet bibendum lectus vitae tincidunt.
-    </string>
+    <string name="select_image">Select Image</string>
+    <string name="add_car">Add car</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+
+    <string name="fragment_add_car_label">Add car</string>
+    <string name="fragment_settings_label">Settings</string>
+    <string name="fragment_car_list_label">Car list</string>
+
+    <string name="snackbar_car_added">The car has been added</string>
+
+    <string name="input_car_car_maker_hint">Car maker</string>
+    <string name="input_car_car_maker_error">Car maker must be selected</string>
+
+    <string name="input_car_model_hint">Model</string>
+
+    <string name="input_car_price_hint">Price</string>
+    <string name="input_car_price_error">Price must be positive</string>
+
+    <string name="input_car_year_hint">Year</string>
+    <string name="input_car_year_error">Year must be correct</string>
+
+    <string name="input_car_color_hint">Color</string>
+    <string name="input_car_color_error">Car color must be selected</string>
+
+    <string name="input_car_body_hint">Car body</string>
+    <string name="input_card_body_error">Car body must be selected</string>
+
+    <string name="input_mileage_hint">Mileage</string>
+    <string name="input_mileage_error">Car mileage must be positive</string>
+
+    <string name="input_car_transmission_hint">Transmission</string>
+    <string name="input_car_transmission_error">Car transmission must be selected</string>
+
+    <string name="input_car_drivetrain_hint">Car drivetrain</string>
+    <string name="input_car_drivetrain_error">Car drivetrain must be selected</string>
+
+    <string name="input_car_description_hint">Description</string>
 </resources>

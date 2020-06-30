@@ -3,10 +3,13 @@ package by.agd.rsandroidtask4.model
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
+import android.os.Parcelable
 import android.provider.BaseColumns
 import androidx.core.database.getStringOrNull
 import by.agd.rsandroidtask4.database.CarContract.CarEntry
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Car(
     var id: Long = 0,
     var carMaker: Int = -1,
@@ -15,12 +18,12 @@ data class Car(
     var imageUri: Uri? = null,
     var body: Int = -1,
     var color: Int = -1,
-    var year: Int = -1,
-    var mileage: Int = -1,
+    var year: Int = 1960,
+    var mileage: Int = 0,
     var transmission: Int = -1,
     var drivetrain: Int = -1,
     var description: String = ""
-) {
+) : Parcelable {
     fun toContentValues(): ContentValues {
         return ContentValues().apply {
             put(CarEntry.COLUMN_NAME_CAR_MAKER, carMaker)
@@ -40,7 +43,6 @@ data class Car(
     companion object {
         fun fromCursor(cursor: Cursor): Car {
             val car = Car()
-
             with(cursor) {
                 car.apply {
                     id = getLong(getColumnIndexOrThrow(BaseColumns._ID))
@@ -51,13 +53,12 @@ data class Car(
                     body = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_BODY))
                     color = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_COLOR))
                     year = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_YEAR))
-                    mileage = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_YEAR))
+                    mileage = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_MILEAGE))
                     transmission = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_TRANSMISSION))
                     drivetrain = getInt(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_DRIVETRAIN))
                     description = getString(getColumnIndexOrThrow(CarEntry.COLUMN_NAME_DESCRIPTION))
                 }
             }
-
             return car
         }
     }

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="car_body_hatchback">Hatchback</string>
+    <string name="car_body_sedan">Sedan</string>
+    <string name="car_body_muv">MUV/SUV</string>
+    <string name="car_body_coupe">Coupe</string>
+    <string name="car_body_convertible">Convertible</string>
+    <string name="car_body_wagon">Wagon</string>
+    <string name="car_body_van">Van</string>
+    <string name="car_body_jeep">Jeep</string>
+
     <string-array name="car_body_types">
         <item>@string/car_body_hatchback</item>
         <item>@string/car_body_sedan</item>
@@ -12,6 +21,12 @@
         <item>@string/car_body_jeep</item>
     </string-array>
 
+    <string name="car_transmission_manual">Manual</string>
+    <string name="car_transmission_automatic">Auto</string>
+    <string name="car_transmission_continuously">Continuously</string>
+    <string name="car_transmission_semi">Semi-auto</string>
+    <string name="car_transmission_dual">Dual-clutch</string>
+
     <string-array name="car_transmission_types">
         <item>@string/car_transmission_manual</item>
         <item>@string/car_transmission_automatic</item>
@@ -19,6 +34,9 @@
         <item>@string/car_transmission_semi</item>
         <item>@string/car_transmission_dual</item>
     </string-array>
+
+    <string name="car_drivetrain_two">Two-wheel</string>
+    <string name="car_drivetrain_four">Four-wheel</string>
 
     <string-array name="car_drivetrain_types">
         <item>@string/car_drivetrain_two</item>

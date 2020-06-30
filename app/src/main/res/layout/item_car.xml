@@ -15,10 +15,9 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/AppTheme.App.CardView.Outlined"
+        style="@style/AppTheme.App.CardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,27 +25,20 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/logo"
+                style="@style/CardView.Image.Label"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/margin_small"
-                android:padding="4dp"
-                android:scaleType="centerCrop"
                 android:src="@{@typedArray/car_makers_logo.getDrawable(car.carMaker)}"
                 app:layout_constraintBottom_toBottomOf="@id/price"
-                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/model" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/model"
+                style="@style/CardView.Text.Primary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:layout_marginEnd="@dimen/margin_medium"
-                android:fontFamily="@font/roboto"
                 android:text="@{@string/car_name(@stringArray/car_makers_name[car.carMaker], car.model)}"
-                android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/logo"
                 app:layout_constraintTop_toTopOf="parent"
@@ -54,14 +46,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/price"
+                style="@style/CardView.Text.Secondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginTop="0dp"
                 android:fontFamily="@font/asap"
                 android:text='@{@string/car_price(ViewBindingConverter.decimalFormat(car.price, "###,###,##0.00"))}'
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/logo"
@@ -70,68 +60,63 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image"
-                setImageUri="@{car.imageUri}"
+                style="@style/CardView.Image.Main"
+                loadImage="@{car.imageUri}"
+                loadImageError="@{@drawable/car_placeholder}"
+                loadImagePlaceholder="@{@drawable/car_placeholder}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:paddingTop="@dimen/padding_medium"
-                android:paddingBottom="@dimen/padding_medium"
-                android:scaleType="centerCrop"
-                app:layout_constraintDimensionRatio="w,9:16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/price" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/body"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_body(@stringArray/car_body_types[car.body]))}"
                 app:layout_constraintEnd_toStartOf="@+id/color"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="Body:" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/color"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_color(@stringArray/car_colors[car.color]))}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/body"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="Color:" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/year"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_year(car.year))}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/mileage"
                 app:layout_constraintTop_toBottomOf="@id/body"
                 tools:text="Year:" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/mileage"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_mileage(car.mileage))}"
                 app:layout_constraintEnd_toStartOf="@+id/year"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/body"
                 tools:text="Mileage:" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/transmission"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_transmission(@stringArray/car_transmission_types[car.transmission]))}"
@@ -143,7 +128,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/drivetrain"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{Html.fromHtml(@string/car_drivetrain(@stringArray/car_drivetrain_types[car.drivetrain]))}"
@@ -154,53 +139,40 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/description"
-                style="@style/CarTechnicalText"
+                style="@style/CardView.Text.Secondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:singleLine="false"
                 android:text="@{car.description}"
-                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/drivetrain" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/editButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/CardView.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="Edit"
-                app:cornerRadius="0dp"
+                android:text="@string/edit"
                 app:icon="@drawable/ic__edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description"
-                app:strokeWidth="0dp" />
+                app:layout_constraintTop_toBottomOf="@id/description" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/deleteButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/CardView.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="Delete"
-                app:cornerRadius="0dp"
+                android:text="@string/delete"
                 app:icon="@drawable/ic_delete"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/editButton"
-                app:layout_constraintTop_toBottomOf="@id/description"
-                app:strokeWidth="0dp" />
+                app:layout_constraintTop_toBottomOf="@id/description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

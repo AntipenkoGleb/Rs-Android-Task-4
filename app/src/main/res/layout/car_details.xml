@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="by.agd.rsandroidtask4.binding.ViewBindingConverter" />
 
         <variable
-            name="viewModel"
-            type="by.agd.rsandroidtask4.view.addcar.AddCarViewModel" />
+            name="car"
+            type="by.agd.rsandroidtask4.model.Car" />
 
         <variable
             name="selectImageClickListener"
@@ -26,8 +27,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
-            android:hint="Car maker"
-            app:helperText="*Required"
+            android:hint="@string/input_car_car_maker_hint"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,9 +40,11 @@
                 style="@style/AppTheme.App.EditText.NoEdit"
                 setImageList="@{@typedArray/car_makers_logo}"
                 setItemList="@{@stringArray/car_makers_name}"
-                setSelected="@={viewModel.car.carMaker}"
+                setSelected="@={car.carMaker}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -49,8 +52,7 @@
             style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Model"
-            app:helperText="*Required"
+            android:hint="@string/input_car_model_hint"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/priceInputLayout"
             app:layout_constraintHorizontal_bias="0.5"
@@ -62,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
-                android:text="@={viewModel.car.model}" />
+                android:text="@={car.model}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -71,8 +73,8 @@
             style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Price"
-            app:helperText="*Required"
+            android:hint="@string/input_car_price_hint"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -85,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="numberDecimal"
-                android:text="@={ViewBindingConverter.floatToString(viewModel.car.price)}" />
+                android:text="@={ViewBindingConverter.floatToString(car.price)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -94,8 +96,8 @@
             style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Year"
-            app:helperText="*Required"
+            android:hint="@string/input_car_year_hint"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/mileageInputLayout"
             app:layout_constraintHorizontal_bias="0.5"
@@ -107,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
-                android:text="@={ViewBindingConverter.intToString(viewModel.car.year)}" />
+                android:text="@={ViewBindingConverter.intToString(car.year)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -116,8 +118,8 @@
             style="@style/AppTheme.App.EditTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Mileage"
-            app:helperText="*Required"
+            android:hint="@string/input_mileage_hint"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -130,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
-                android:text="@={ViewBindingConverter.intToString(viewModel.car.mileage)}" />
+                android:text="@={ViewBindingConverter.intToString(car.mileage)}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -138,8 +140,8 @@
             style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Body"
-            app:helperText="*Required"
+            android:hint="@string/input_car_body_hint"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/colorInputLayout"
             app:layout_constraintHorizontal_bias="0.5"
@@ -149,9 +151,10 @@
             <AutoCompleteTextView
                 style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_body_types}"
-                setSelected="@={viewModel.car.body}"
+                setSelected="@={car.body}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -160,9 +163,9 @@
             style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Color"
+            android:hint="@string/input_car_color_hint"
             app:boxBackgroundMode="outline"
-            app:helperText="*Required"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -171,11 +174,12 @@
 
             <AutoCompleteTextView
                 setItemList="@{@stringArray/car_colors}"
-                setSelected="@={viewModel.car.color}"
+                setSelected="@={car.color}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:singleLine="true" />
+                android:singleLine="true"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -183,9 +187,9 @@
             style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Transmission: "
+            android:hint="@string/input_car_transmission_hint"
             app:boxBackgroundMode="outline"
-            app:helperText="*Required"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/drivetrainInputLayout"
             app:layout_constraintHorizontal_bias="0.5"
@@ -195,9 +199,10 @@
             <AutoCompleteTextView
                 style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_transmission_types}"
-                setSelected="@={viewModel.car.transmission}"
+                setSelected="@={car.transmission}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -206,9 +211,9 @@
             style="@style/AppTheme.App.DropDownInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Drivetrain"
+            android:hint="@string/input_car_drivetrain_hint"
             app:boxBackgroundMode="outline"
-            app:helperText="*Required"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -218,18 +223,19 @@
             <AutoCompleteTextView
                 style="@style/AppTheme.App.EditText.NoEdit"
                 setItemList="@{@stringArray/car_drivetrain_types}"
-                setSelected="@={viewModel.car.drivetrain}"
+                setSelected="@={car.drivetrain}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/selectImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_large"
             android:onClick="@{selectImageClickListener}"
-            android:text="Select imagee"
+            android:text="@string/select_image"
             app:layout_constraintEnd_toStartOf="@id/selectedImageName"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -240,7 +246,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text="@{ViewBindingConverter.uriToFilename(viewModel.car.imageUri)}"
+            android:text="@{ViewBindingConverter.uriToFilename(car.imageUri)}"
             app:layout_constraintBottom_toBottomOf="@id/selectImageButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -253,8 +259,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_large"
-            android:hint="Description"
-            app:helperText="*Required"
+            android:hint="@string/input_car_description_hint"
+            app:errorEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -265,7 +271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
-                android:text="@={viewModel.car.description}" />
+                android:text="@={car.description}" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

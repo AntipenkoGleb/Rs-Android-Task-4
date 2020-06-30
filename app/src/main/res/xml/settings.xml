@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         android:key="sorting_category"
-        android:title="Sorting">
+        android:title="Sorting"
+        app:allowDividerAbove="true">
+
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/pref_sorting_enabled_key"
             android:title="@string/pref_sorting_enabled_title" />
+
         <ListPreference
             android:defaultValue="@string/entry_value_sorting_field_car_maker"
             android:dependency="@string/pref_sorting_enabled_key"
@@ -14,6 +18,7 @@
             android:entryValues="@array/pref_sorting_entry_values"
             android:key="@string/pref_sorting_field_key"
             android:title="@string/pref_sorting_field_title" />
+
         <ListPreference
             android:defaultValue="@string/entry_sorting_order_asc"
             android:dependency="@string/pref_sorting_enabled_key"
@@ -21,6 +26,58 @@
             android:entryValues="@array/pref_sorting_order_entries"
             android:key="@string/pref_sorting_order_key"
             android:title="@string/pref_sorting_order_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="filter_category"
+        android:title="Filtering">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_filtering_enabled_key"
+            android:title="@string/pref_filtering_enabled_title" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/pref_filtering_car_maker_entry_values"
+            android:dependency="@string/pref_filtering_enabled_key"
+            android:entries="@array/car_makers_name"
+            android:entryValues="@array/pref_filtering_car_maker_entry_values"
+            android:key="@string/pref_filtering_car_maker_key"
+            android:title="@string/pref_filtering_car_maker_title" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/pref_filtering_color_entry_values"
+            android:dependency="@string/pref_filtering_enabled_key"
+            android:entries="@array/car_colors"
+            android:entryValues="@array/pref_filtering_color_entry_values"
+            android:key="@string/pref_filtering_color_key"
+            android:title="@string/pref_filtering_color_title" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/pref_filtering_body_entry_values"
+            android:dependency="@string/pref_filtering_enabled_key"
+            android:entries="@array/car_body_types"
+            android:entryValues="@array/pref_filtering_body_entry_values"
+            android:key="@string/pref_filtering_body_key"
+            android:title="@string/pref_filtering_body_title" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/pref_filtering_transmission_entry_values"
+            android:dependency="@string/pref_filtering_enabled_key"
+            android:entries="@array/car_transmission_types"
+            android:entryValues="@array/pref_filtering_transmission_entry_values"
+            android:key="@string/pref_filtering_transmission_key"
+            android:title="@string/pref_filtering_transmission_title" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/pref_filtering_drivetrain_entry_values"
+            android:dependency="@string/pref_filtering_enabled_key"
+            android:entries="@array/car_drivetrain_types"
+            android:entryValues="@array/pref_filtering_drivetrain_entry_values"
+            android:key="@string/pref_filtering_drivetrain_key"
+            android:title="@string/pref_filtering_drivetrain_title" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

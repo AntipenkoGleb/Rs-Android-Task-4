@@ -1,7 +1,6 @@
 package by.agd.rsandroidtask4.binding
 
 import android.net.Uri
-import androidx.core.net.toFile
 import androidx.databinding.InverseMethod
 import java.text.DecimalFormat
 

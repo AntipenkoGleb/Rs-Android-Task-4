@@ -3,12 +3,12 @@
 
     <!--  Enable sorting  -->
 
-    <string name="pref_sorting_enabled_key">sorting_enabled</string>
+    <string name="pref_sorting_enabled_key">sorting_enabled_key</string>
     <string name="pref_sorting_enabled_title">Enable sorting</string>
 
     <!--  Sorting field  -->
 
-    <string name="pref_sorting_field_key">sorting_field</string>
+    <string name="pref_sorting_field_key">sorting_field_key</string>
     <string name="pref_sorting_field_title">Field</string>
 
     <string name="summary_sorting_field_format">Sorting by: %1$s</string>
@@ -39,7 +39,7 @@
 
     <!--  Sorting order  -->
 
-    <string name="pref_sorting_order_key">sorting_order</string>
+    <string name="pref_sorting_order_key">sorting_order_key</string>
     <string name="pref_sorting_order_title">Order</string>
 
     <string name="summary_sorting_order_format">Order by: %1$s</string>
@@ -51,4 +51,104 @@
         <item>@string/entry_sorting_order_asc</item>
         <item>@string/entry_sorting_order_desc</item>
     </string-array>
+
+
+    <!--  Filtering  -->
+
+    <!--  EnableFiltering  -->
+
+    <string name="pref_filtering_enabled_key">filtering_enabled_key</string>
+    <string name="pref_filtering_enabled_title">Enable Filtering</string>
+
+    <!--  Car maker  -->
+    <string name="pref_filtering_car_maker_key">filtering_car_maker_key</string>
+    <string name="pref_filtering_car_maker_title">Car maker</string>
+
+    <string-array name="pref_filtering_car_maker_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+    <!--  Color  -->
+    <string name="pref_filtering_color_key">filtering_color_key</string>
+    <string name="pref_filtering_color_title">Color</string>
+
+    <string-array name="pref_filtering_color_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!--  Body  -->
+    <string name="pref_filtering_body_key">filtering_body_key</string>
+    <string name="pref_filtering_body_title">Body</string>
+
+    <string-array name="pref_filtering_body_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <!--  Transmission  -->
+    <string name="pref_filtering_transmission_key">filtering_transmission_key</string>
+    <string name="pref_filtering_transmission_title">Transmission</string>
+
+    <string-array name="pref_filtering_transmission_entry_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!--  Drivetrain  -->
+    <string name="pref_filtering_drivetrain_key">filtering_drivetrain_key</string>
+    <string name="pref_filtering_drivetrain_title">Drivetrain</string>
+
+    <string-array name="pref_filtering_drivetrain_entry_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 </resources>

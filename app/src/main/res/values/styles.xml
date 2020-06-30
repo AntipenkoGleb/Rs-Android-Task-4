@@ -7,44 +7,89 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.App.CardView" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">@dimen/card_elevation</item>
-    </style>
-
-    <style name="AppTheme.App.CardView.Outlined" parent="AppTheme.App.CardView">
-        <item name="strokeWidth">@dimen/card_stroke_width</item>
-        <item name="strokeColor">@color/colorLightGray</item>
-    </style>
-
     <style name="AppTheme.App">
+    </style>
+
+    <style name="AppTheme.App.Text">
         <item name="fontFamily">@font/roboto</item>
     </style>
 
-    <style name="CarTechnicalText">
-        <item name="android:fontFamily">@font/roboto</item>
-        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:layout_marginTop">@dimen/margin_small</item>
-        <item name="android:layout_marginBottom">@dimen/margin_small</item>
+    <style name="AppTheme.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+    </style>
+
+    <style name="CardView.Text" parent="AppTheme.App.Text">
         <item name="android:layout_marginStart">@dimen/margin_medium</item>
         <item name="android:layout_marginEnd">@dimen/margin_medium</item>
+        <item name="singleLine">true</item>
     </style>
 
-    <style name="AppTheme.App.EditTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="CardView.Text.Primary" parent="CardView.Text">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+    </style>
+
+    <style name="CardView.Text.Secondary" parent="CardView.Text">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="CardView.Text.Secondary.Small" parent="CardView.Text.Secondary">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_margin">@dimen/margin_medium</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:scrollHorizontally">false</item>
+    </style>
+
+    <style name="CardView.Image">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="CardView.Image.Label">
+        <item name="android:layout_marginStart">@dimen/margin_small</item>
+        <item name="android:padding">4dp</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+
+    </style>
+
+    <style name="CardView.Image.Main">
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
+        <item name="android:layout_marginBottom">@dimen/margin_large</item>
+        <item name="layout_constraintDimensionRatio">w,9:16</item>
+    </style>
+
+    <style name="CardView.Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_marginTop">@dimen/margin_large</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="AppTheme.App.EditTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="android:layout_margin">@dimen/margin_medium</item>
     </style>
 
-    <style name="AppTheme.App.DropDownInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+    <style name="AppTheme.App.DropDownInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="android:layout_margin">@dimen/margin_medium</item>
     </style>
 
-    <style name="AppTheme.App.EditText">
+    <style name="AppTheme.App.EditText" parent="AppTheme.App.Text">
         <item name="singleLine">true</item>
     </style>
 
     <style name="AppTheme.App.EditText.NoEdit" parent="AppTheme.App.EditText">
         <item name="android:inputType">none</item>
+    </style>
+
+    <style name="AppTheme.App.Fab">
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+        <item name="android:elevation">2dp</item>
+        <item name="layout_anchorGravity">bottom|right|end</item>
+        <item name="layout_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</item>
     </style>
 
 </resources>

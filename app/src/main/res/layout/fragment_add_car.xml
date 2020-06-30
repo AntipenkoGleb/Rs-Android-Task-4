@@ -36,13 +36,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:selectImageClickListener="@{selectImageClickListener}"
-                app:viewModel="@{viewModel}" />
+                app:car="@{viewModel.car}" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_car_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> addCarClickListener.onClick(viewModel.car)}"
-                android:text="Add car"
+                android:text="@string/add_car"
                 app:icon="@drawable/ic_add_car"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
