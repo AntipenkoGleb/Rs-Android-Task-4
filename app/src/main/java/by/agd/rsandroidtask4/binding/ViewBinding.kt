@@ -8,7 +8,7 @@ import coil.api.load
 
 
 @BindingAdapter("loadImage", "loadImagePlaceholder", "loadImageError", requireAll = false)
-fun setImageUri(view: ImageView, uri: Uri, placeholderImage: Drawable?, errorImage: Drawable?) {
+fun setImageUri(view: ImageView, uri: Uri?, placeholderImage: Drawable?, errorImage: Drawable?) {
     view.load(uri) {
         placeholderImage?.let { placeholder(it) }
         errorImage?.let { error(it) }

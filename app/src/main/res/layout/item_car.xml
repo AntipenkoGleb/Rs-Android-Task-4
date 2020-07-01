@@ -12,9 +12,13 @@
         <variable
             name="car"
             type="by.agd.rsandroidtask4.model.Car" />
+        <variable
+            name="isChecked"
+            type="Boolean" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/car_item"
         style="@style/AppTheme.App.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
